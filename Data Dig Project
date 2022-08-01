@@ -68,3 +68,4 @@ SELECT COUNT(*), alignment,
         WHEN alignment = "Bad" THEN "Non-Favourite"
 END as "favourites_or_non_favourites"
 FROM marvels;
+
