@@ -1,0 +1,28 @@
+/* Create table about the people and what they do here */
+CREATE TABLE actors (id INTEGER PRIMARY KEY, first_name TEXT, last_name TEXT, birthyear INTEGER, email TEXT, favourites TEXT);
+
+INSERT INTO actors VALUES
+(1, "Ariana", "Grande", 1993, "arianagrande@gmail.com", "No"),
+(2, "Jennifer", "Lawrence", 1990, "jlaw@gmail.com", "Yes"),
+(3, "Johnny", "Depp", 1963, "johnnydepp@gmail.com", "Yes"),
+(4, "Joaquin", "Phoenix", 1974, "JP@gmail.com", "Yes"),
+(5, "Tom", "Holland", 1996, "tomholland@gmail.com", "No"),
+(6, "Dylan", "Lim", 2000, "dylanlim314@gmail.com", "Yes");
+
+
+CREATE table movies (id INTEGER PRIMARY KEY AUTOINCREMENT, famous_person_id INTEGER, movie TEXT, year INTEGER);
+    
+INSERT INTO movies (famous_person_id, movie, year) VALUES 
+(1, "Don't Look Up", 2022),
+(2, "Passengers", 2019),
+(3, "Charlie and the Chocolate Factory", 2005),
+(4, "Joker", 2019),
+(5, "Spiderman No Way Home", 2022);
+
+/*What movies are each actors in? (include non-movie actors)*/
+
+SELECT actors.first_name, actors.last_name, movie, year FROM actors
+    LEFT OUTER JOIN movies
+    ON actors.id = movies.famous_person_id
+
+/*produce a table that shows movies after 1990 and only contain favourite actors*/
