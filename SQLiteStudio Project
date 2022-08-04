@@ -74,3 +74,10 @@ HAVING count(orderID)>2;
 SELECT Product, sum(quantity) FROM BIT_DB.FebSales
 WHERE Product like '%headphones%'
 GROUP BY Product
+
+/*What was the average amount spent per account in February?*/
+
+ SELECT orderID, sum(quantity*price)/count(cust.acctnum)
+ FROM BIT_DB.FebSales feb
+ LEFT JOIN customers cust
+ ON feb.orderID = cust.order_id;
