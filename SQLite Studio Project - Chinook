@@ -1,0 +1,24 @@
+/*Show Customers (their full names, customer ID, and country) who are not in the US. (Hint: != or <> can be used to say "is not equal to").*/
+
+SELECT FirstName, LastName, CustomerId, Country FROM chinook.customers WHERE Country != 'USA';
+
+/*Show only the Customers from Brazil.*/
+
+SELECT * FROM chinook.customers WHERE Country = 'Brazil';
+
+/*Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.*/
+
+SELECT cust.Firstname, cust.Lastname, inv.InvoiceId, inv.InvoiceDate, inv.BillingCountry
+FROM chinook.customers as cust
+LEFT JOIN chinook.invoices as inv
+ON inv.CustomerId = cust.customerId
+WHERE cust.Country = 'Brazil'
+GROUP BY cust.FirstName;
+
+/*Show the Employees who are Sales Agents.*/
+
+SELECT * FROM chinook.employees WHERE Title = 'Sales Support Agent';
+
+/*Find a unique/distinct list of billing countries from the Invoice table.*/
+
+SELECT DISTINCT BillingCountry FROM chinook.invoices;
